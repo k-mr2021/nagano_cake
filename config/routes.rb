@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root "homes#top"
-    resources :customers, only: [:show]
+    resources :customers, only: [:show, :edit, :update]
   end
   
 end
