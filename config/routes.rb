@@ -17,7 +17,14 @@ Rails.application.routes.draw do
     get '/' => 'homes#top', as: :admin_top 
   end
   
+  scope module: :public do
+    root "homes#top"
+    resources :customers, only: [:show]
+  end
+  
 end
+
+
 
 
 

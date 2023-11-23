@@ -15,7 +15,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.datetime :remember_created_at
       t.string :last_name, null: false
       t.string :first_name, null: false
-      t.string :last_nmae_kana, null: false
+      t.string :last_name_kana, null: false
       t.string :first_name_kana, null: false
       t.string :postal_code, null: false
       t.string :address, null: false
@@ -50,3 +50,4 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
     # add_index :customers, :unlock_token,         unique: true
   end
 end
+
