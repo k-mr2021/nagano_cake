@@ -18,11 +18,16 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
-    root "homes#top"
+    
     resources :customers, only: [:show, :edit, :update]
   end
   
 end
+
+
+
+
+
 
 
 
