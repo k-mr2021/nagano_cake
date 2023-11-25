@@ -1,6 +1,7 @@
 <div>
   <h2>会員情報編集</h2>
   <div>
+    <!--更新メソッド-->
     <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
     <div>
       <div>
@@ -31,11 +32,16 @@
       </div>
       <div>
         <%= f.submit "編集内容を保存" %>
+        <%= link_to "退会する", check_path %>
       </div>
     </div>
   <% end %>
   </div>
 </div>
+
+
+
+
 
 
 
