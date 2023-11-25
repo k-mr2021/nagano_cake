@@ -8,17 +8,11 @@
     <tbody>
       <tr>
         <td>氏名</td>
-        <td>
-          <%= @customer.last_name %>
-          <%= @customer.first_name %>
-        </td>
+        <td><%= @full_name %></td>
       </tr>
       <tr>
         <td>カナ</td>
-        <td>
-          <%= @customer.last_name_kana %>
-          <%= @customer.first_name_kana %>
-        </td>
+        <td><%= @full_name_kana %></td>
       </tr>
       <tr>
         <td>郵便番号</td>
@@ -46,8 +40,6 @@
   </div>
   
 </div>
-
-
 
 
 
