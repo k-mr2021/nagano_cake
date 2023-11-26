@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     get '/' => 'homes#top', as: :admin_top 
+    resources :genres, only: [:index, :create, :edit, :update]
   end
   
   # 顧客用
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   }
   
   scope module: :public do
+    root to: 'homes#top'
     # 退会確認画面
     get '/costomers/check' => 'customers#check', as: 'check'
     # 退会処理(ステータス更新)
@@ -27,6 +29,9 @@ Rails.application.routes.draw do
   end
   
 end
+
+
+
 
 
 
