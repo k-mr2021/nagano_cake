@@ -1,0 +1,45 @@
+<div>
+  <div>
+    <div>
+      <h2>商品一覧</h2>
+    </div>
+  </div>
+  <div>
+    <div>
+      <table class= "table">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜き価格</th>
+            <th>ジャンル</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--追加した商品の一覧表示-->
+          <% @items.each do |item| %>
+          <tr>
+            <!--商品ID-->
+            <td><%= item.id %></td>
+            <!--商品詳細へのリンク-->
+            <td><%= link_to admin_item_path(item.id) do %>
+            <!--商品ID,商品名-->
+              <%= item.name %>
+            <% end %>
+            </td>
+            <!--税抜き価格-->
+            <td><%= item.price %></td>
+            <!--アソシエーション設定後genresテーブルからデータ取得-->
+            <td><%= item.genre.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
+
+
+
+
