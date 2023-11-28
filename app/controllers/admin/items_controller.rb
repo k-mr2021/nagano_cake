@@ -16,7 +16,7 @@ class Admin::ItemsController < ApplicationController
   end
   
   def show
-    
+    @item_found = Item.find(params[:id])
   end
   
   def edit
@@ -34,6 +34,8 @@ class Admin::ItemsController < ApplicationController
   end
   
 end
+
+
 
 
 

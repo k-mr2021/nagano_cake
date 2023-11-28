@@ -1,1 +1,26 @@
-<h2>商品詳細</h2>
+<div>
+  <div>
+    <div>
+      <h2>商品詳細</h2>
+    </div>
+  </div>
+  <div>
+    <!--prsent?は画像が存在するときだけimage_tagに@item_foundを渡す。つまり画像が存在しないと表示させずエラーを回避する-->
+    <%= image_tag @item_found.image if @item_found.image.present? %>
+  <div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
