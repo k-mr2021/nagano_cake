@@ -5,12 +5,25 @@
     </div>
   </div>
   <div>
-    <!--prsent?は画像が存在するときだけimage_tagに@item_foundを渡す。つまり画像が存在しないと表示させずエラーを回避する-->
-    <%= image_tag @item_found.image if @item_found.image.present? %>
-  <div>
+    <div>
+      <!--prsent?は画像が存在するときだけimage_tagに@item_foundを渡す。つまり画像が存在しないと表示させずエラーを回避する-->
+      <%= image_tag @item_found.image if @item_found.image.present? %>
+    </div>
+    <div>
+      <p>商品名</p>
+      <%= @item_found.name %>
+      <p>商品説明</p>
+      <%= @item_found.introduction %>
+      <p>ジャンル</p>
+      <%= @item_found.genre.name %>
+      <p>税込価格(税抜価格)</p>
+      <%= @item_found.price %>
     </div>
   </div>
 </div>
+
+
+
 
 
 
