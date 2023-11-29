@@ -19,8 +19,15 @@
       <p>税込価格(税抜価格)</p>
       <%= @item_found.price %>
     </div>
+    <div>
+      <!--編集画面へのリンク-->
+      <p><%= link_to "編集する", edit_admin_item_path(@item_found) %></p>
+    </div>
   </div>
 </div>
+
+
+
 
 
 

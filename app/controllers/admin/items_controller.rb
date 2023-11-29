@@ -20,11 +20,13 @@ class Admin::ItemsController < ApplicationController
   end
   
   def edit
-    
+    @item_found = Item.find(params[:id])
   end
   
   def update
-    
+    @item_found = Item.find(params[:id])
+    @item_found.update(itme_params)
+    redirect_to admin_item_path(@item_found.id)
   end
   
   private
@@ -34,6 +36,15 @@ class Admin::ItemsController < ApplicationController
   end
   
 end
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,55 @@
+<div>
+  <div>
+    <div>
+      <h2>商品編集</h2>
+    </div>
+  </div>
+  <div>
+    <div>
+      <!--アイテムの更新パス-->
+      <%= form_with model: @item_found, url: admin_item_path(@item_found.id), method: :patch do |f| %>
+      <table>
+        <tr>
+          <div class="form_group">
+            <th><%= f.label :商品画像 %></th>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form_group">
+            <th><%= f.label :商品名 %></th>
+            <td><%= f.text_field :name %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form_group">
+            <th><%= f.label :商品説明 %></th>
+            <td><%= f.text_area :introduction %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form_group">
+            <th><%= f.label :ジャンル %></th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form_group">
+            <th><%= f.label :税抜き価格 %></th>
+            <td><%= f.text_field :price %>円</td>
+          </div>
+        </tr>
+        <tr>
+          <div>
+            <th><%= f.submit "変更を保存" %></th>
+          </div>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
