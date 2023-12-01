@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <div>
+      <%= image_tag @item_found.image if @item_found.image.present? %>
+    </div>
+  </div>
+  <div>
+    <div>
+      
+      <%= @item_found.name %>
+      
+      <%= @item_found.introduction %>
+      
+      ￥<%= @item_found.price %>(税込)
+    </div>
+  </div>
+</div>
+
+
+

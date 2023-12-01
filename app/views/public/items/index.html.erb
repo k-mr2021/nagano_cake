@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <div>
+      <h2>商品一覧</h2>
+    </div>
+  </div>
+  <% @items.each do |item| %>
+    <div>
+      <div>
+        <%= link_to item_path(item.id) do %>
+          <!--present?で画像が存在しないときのエラー回避-->
+          <%= image_tag item.image if item.image.present? %>
+        <% end %>
+        <%= item.name %>
+        <%= item.price %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

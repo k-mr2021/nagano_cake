@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     # 退会処理(ステータス更新)
     patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :customers, only: [:show, :edit, :update]
+    resources :items, only: [:index, :show]
   end
   
 end
