@@ -1,0 +1,41 @@
+<div>
+  <div>
+    <div>
+      <h2><%= @full_name %>さんの会員詳細</h2>
+    </div>
+  </div>
+  <div>
+    <div>
+      <p>会員ID</p>
+      <%= @customer_found.id %>
+      <p>氏名</p>
+      <%= @full_name %>
+      <p>フリガナ</p>
+      <%= @full_name_kana %>
+      <p>郵便番号</p>
+      <%= @customer_found.postal_code %>
+      <p>住所</p>
+      <%= @customer_found.address %>
+      <p>電話番号</p>
+      <%= @customer_found.telephone_number %>
+      <p>メールアドレス</p>
+      <%= @customer_found.email %>
+      <p>会員ステータス</p>
+      <% if @customer_found.is_active == false %>
+        <p>無効</p>
+      <% else %>
+        <p>有効</p>
+      <% end %>
+    </div>
+    <div>
+      <!--顧客編集画面へのリンク-->
+      <p><%= link_to "編集する", edit_admin_customer_path(@customer_found) %></p>
+      <!--顧客一覧へ戻る-->
+      <p>注文履歴一覧を見る</p>
+    </div>
+  </div>
+</div>
+
+
+
+

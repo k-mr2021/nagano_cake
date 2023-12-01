@@ -9,8 +9,11 @@ class Admin::CustomersController < ApplicationController
   
   def show
     @customer_found = Customer.find(params[:id])
+    @full_name = @customer_found.last_name + @customer_found.first_name
+    @full_name_kana = @customer_found.last_name_kana + @customer_found.first_name_kana
   end
 end
+
 
 
 
