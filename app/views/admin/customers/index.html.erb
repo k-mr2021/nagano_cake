@@ -1,0 +1,57 @@
+<div>
+  <div>
+    <div>
+      <h2>会員一覧</h2>
+    </div>
+  </div>
+  <div>
+    <div>
+      <table class= "table">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--顧客の一覧表示-->
+          <% @customers.each_with_index do |customer, index| %>
+          <tr>
+            <!--会員ID-->
+            <td><%= customer.id %></td>
+            <!--会員詳細へのリンク-->
+            <td><%= link_to admin_customer_path(customer.id) do %>
+            <!--会員氏名-->
+              <%= @full_names[index] %>
+            <% end %>
+            </td>
+            <!--会員のメールアドレス-->
+            <td><%= customer.email %></td>
+            <!--会員のステータス-->
+            <td>
+              <% if customer.is_active == false %>
+                <p>退会</p>
+              <% else %>
+                <p>有効</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @customers %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
