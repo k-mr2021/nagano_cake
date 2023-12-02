@@ -6,5 +6,8 @@ class Customer < ApplicationRecord
   
   # アソシエーション
   has_many :addresses, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
   
 end
+
+

@@ -6,15 +6,22 @@
   </div>
   <div>
     <div>
-      
       <%= @item_found.name %>
-      
       <%= @item_found.introduction %>
-      
       ￥<%= @item_found.price %>(税込)
+      <!--カートに商品追加-->
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :item_id, value: @item_found.id %>
+        <%= f.select :amount, *[1..10] %>
+        <%= f.submit "カートに入れる" %>
+      <% end %>
     </div>
   </div>
 </div>
+
+
+
+
 
 
 
