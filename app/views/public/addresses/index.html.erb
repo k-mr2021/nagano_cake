@@ -1,3 +1,13 @@
+<% if @address.errors.any? %>
+  <div>
+    <h2>エラーメッセージ:</h2>
+    <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <div>
   <div>
     <div>
@@ -22,3 +32,36 @@
       </div>
     </div>
   <% end %>
+  <div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--登録した配送先を表示-->
+          <% @addresses.each do |address| %>
+            <tr>
+              <td><%= address.postal_code %></td>
+              <td><%= address.address %></td>
+              <td><%= address.name %></td>
+              <td>編集する</td>
+              <td><%= link_to "削除する", address_path(address), method: :delete %></td>
+            </tr>
+          <% end %>  
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
