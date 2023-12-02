@@ -12,6 +12,20 @@ class Admin::CustomersController < ApplicationController
     @full_name = @customer_found.last_name + @customer_found.first_name
     @full_name_kana = @customer_found.last_name_kana + @customer_found.first_name_kana
   end
+  
+  def edit
+    @customer_found = Customer.find(params[:id])
+    @full_name = @customer_found.last_name + @customer_found.first_name
+    @full_name_kana = @customer_found.last_name_kana + @customer_found.first_name_kana
+  end
+  
+  def update
+    @customer_fonud = Customer.find(params[:id])
+    @customer_fond.update
+    # 会員詳細へリダイレクト
+    redirect_to admin_customer_path(customer)
+  end
+  
 end
 
 
