@@ -6,6 +6,7 @@ class Item < ApplicationRecord
     imag
   end
   
+  # アソシエーション
   belongs_to :genre
   
 end

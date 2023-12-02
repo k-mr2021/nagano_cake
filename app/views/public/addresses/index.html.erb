@@ -1,0 +1,24 @@
+<div>
+  <div>
+    <div>
+      <h2>配送先登録/一覧</h2>
+    </div>
+  </div>
+  <!--配送先登録-->
+  <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
+    <div>
+      <div class="form-group">
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+        <%= f.text_field :postal_code, placeholder: "0000000" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name, "宛名" %>
+        <%= f.text_field :name, placeholder: "令和道子" %>
+        <%= f.submit "新規登録" %>
+      </div>
+    </div>
+  <% end %>
