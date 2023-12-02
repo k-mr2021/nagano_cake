@@ -20,13 +20,28 @@ class Admin::CustomersController < ApplicationController
   end
   
   def update
-    @customer_fonud = Customer.find(params[:id])
-    @customer_fond.update
+    @customer_found = Customer.find(params[:id])
+    @customer_found.update(customer_params)
     # 会員詳細へリダイレクト
-    redirect_to admin_customer_path(customer)
+    redirect_to admin_customer_path(@customer_found)
+  end
+  
+  private
+  
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :is_active)
   end
   
 end
+
+
+
+
+
+
+
+
+
 
 
 
