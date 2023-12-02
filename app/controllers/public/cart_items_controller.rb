@@ -18,7 +18,6 @@ class Public::CartItemsController < ApplicationController
   end
   
   def create
-    byebug
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
     cart_item.item_id = cart_item_params[:item_id]
