@@ -2,19 +2,28 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   
   def index
-    
+    # ログインしている会員のカート内商品をすべて取得
+    @cart_items = current_customer.cart_items
+    # 合計金額を0と定義
+    @total = 0
   end
   
   def update
-    
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
   
   def destroy
-    
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    redirect_to cart_items_path
   end
   
   def destroy_all
-    
+    cart_items = current_customer.cart_items
+    cart_items.destroy_all
+    redirect_to cart_items_path
   end
   
   def create
@@ -39,6 +48,15 @@ class Public::CartItemsController < ApplicationController
   end
   
 end
+
+
+
+
+
+
+
+
+
 
 
 
