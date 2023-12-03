@@ -27,11 +27,14 @@ Rails.application.routes.draw do
     get '/costomers/check' => 'customers#check', as: 'check'
     # 退会処理(ステータス更新)
     patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+    post '/orders/confirm' => 'orders#confirm', as: 'confirm'
+    get '/orders/complete' => 'orders#complete', as: 'complete'
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
     resources :addresses, only: [:new, :index, :edit, :create, :update, :destroy]
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete '/destroy_all' => 'cart_items#destroy_all'
+    resources :orders, only: [:new, :create, :index, :show]
   end
   
 end
