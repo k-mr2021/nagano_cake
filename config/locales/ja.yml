@@ -4,6 +4,11 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+    address:
+      select_address: 
+        current_address: "ご自身の住所" 
+        registered_address: "登録済住所から選択"
+        new_address: "新しいお届け先"
         
   activerecord:
     errors:
