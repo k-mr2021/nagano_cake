@@ -61,7 +61,9 @@ class Public::OrdersController < ApplicationController
     CartItem.destroy_all
     # 注文完了画面へリダイレクト
     redirect_to complete_path
-    
+  end
+  
+  def complete
   end
   
   private
