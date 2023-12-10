@@ -12,19 +12,105 @@ class Public::OrdersController < ApplicationController
   # 注文情報確認
   def confirm
     @order = Order.new(order_params) 
-    binding.pry
-    @order.postal_code = current_customer.postal_code
-    @order.address = current_customer.address
-    @order.name = current_customer.first_name + current_customer.last_name
+    # binding.pry
+    # 商品合計金額を0と定義
+    @total = 0
+    # 自分の住所
+    if params[:order][:select_address] == "current_address"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.first_name + current_customer.last_name
+    # 登録済み住所
+    elsif params[:order][:select_address] == "registered_address"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    # 新しいお届け先
+    elsif params[:order][:select_address] == "new_address"
+      @order.customer_id = current_customer.id
+    else
+      render 'new'
+    end
+    @cart_items = current_customer.cart_items.all
+    @order.customer_id = current_customer.id
+  end
+  
+  # 注文情報保存
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+    # order_itemを保存
+    # カート内商品を順番に取得
+    current_customer.cart_items.each do |cart_item|
+      # 初期化
+      @order_item = OrderItem.new
+      # 商品idを注文商品idに代入
+      @order_item.item_id = cart_item.item_id
+      #商品の個数を注文商品の個数に代入
+      @order_item.amount = cart_item.amount
+      # 税込み価格算出
+      @order_item.with_tax_price = (cart_item.item.price*1.1).floor
+      # 注文商品に注文idを紐付け
+      @order_item.order_id = @order.id
+      # 注文商品を保存
+      @order_itme.save
+    end
+    # カートの中身削除
+    currrent_customer.cart_items.destroy_all
+    # 注文完了画面へリダイレクト
+    redirect_to complete_orders_path
+    
   end
   
   private
   
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)  
+    params.require(:order).permit(:payment_method, :select_address, :customer_id, :postal_code, :address, :name, )  
   end
   
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,88 @@
+<div>
+  <h2>注文情報確認</h2>
+  <div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <!--商品画像-->
+                <%= image_tag cart_item.item.image if cart_item.item.image.present? %>
+                <!--商品名-->
+                <%= cart_item.item.name %>
+              </td>
+              <!--単価(税込み価格)-->
+              <td><%= cart_item.item.with_tax_price %></td>
+              <!--アイテム数量-->
+              <td><%= cart_item.amount %></td>
+              <!--小計-->
+              <td><%= cart_item.subtotal %></td>
+            </tr>
+            <!--アイテムごとに合計金額に加算-->
+            <% @total +=cart_item.subtotal %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table>
+        <!--送料=800円-->
+        <% @order.postage = 800 %>
+        <tr>
+          <th>送料</th>
+          <td><%= @order.postage %></td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td><%= @total.to_i %></td>
+        </tr>
+        <tr>
+          <!--請求金額を算出する-->
+          <% @order.billing_amount = @order.postage + @total.to_i %>
+          <th>請求金額</th>
+          <td><%= @order.billing_amount %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div>
+    <div>
+      <table>
+        <tr>
+          <th>支払方法</th>
+          <!--enumを日本語で呼び出す-->
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th>お届け先</th>
+          <td>
+            <%= @order.postal_code %>
+            <%= @order.address %>
+            <%= @order.name %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

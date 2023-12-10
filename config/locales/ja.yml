@@ -4,7 +4,6 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
-    address:
       select_address: 
         current_address: "ご自身の住所" 
         registered_address: "登録済住所から選択"
@@ -191,4 +190,5 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+        
         

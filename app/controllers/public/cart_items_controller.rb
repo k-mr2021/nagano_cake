@@ -4,7 +4,7 @@ class Public::CartItemsController < ApplicationController
   def index
     # ログインしている会員のカート内商品をすべて取得
     @cart_items = current_customer.cart_items
-    # 合計金額を0と定義
+    # 商品合計金額を0と定義
     @total = 0
   end
   
