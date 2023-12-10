@@ -12,10 +12,13 @@
           <%= image_tag item.image if item.image.present? %>
         <% end %>
         <%= item.name %>
-        <%= item.price %>
+        ￥<%= item.with_tax_price %>
       </div>
     </div>
   <% end %>
 </div>
+
+
+
 
 

@@ -45,32 +45,40 @@ class Public::OrdersController < ApplicationController
     # カート内商品を順番に取得
     current_customer.cart_items.each do |cart_item|
       # 初期化
-      @order_item = OrderItem.new
+      @order_details = OrderDetail.new
       # 商品idを注文商品idに代入
-      @order_item.item_id = cart_item.item_id
+      @order_details.item_id = cart_item.item_id
       #商品の個数を注文商品の個数に代入
-      @order_item.amount = cart_item.amount
+      @order_details.amount = cart_item.amount
       # 税込み価格算出
-      @order_item.with_tax_price = (cart_item.item.price*1.1).floor
+      @order_details.price = cart_item.item.with_tax_price
       # 注文商品に注文idを紐付け
-      @order_item.order_id = @order.id
+      @order_details.order_id = @order.id
       # 注文商品を保存
-      @order_itme.save
+      @order_details.save!
     end
     # カートの中身削除
-    currrent_customer.cart_items.destroy_all
+    CartItem.destroy_all
     # 注文完了画面へリダイレクト
-    redirect_to complete_orders_path
+    redirect_to complete_path
     
   end
   
   private
   
   def order_params
-    params.require(:order).permit(:payment_method, :select_address, :customer_id, :postal_code, :address, :name, )  
+    params.require(:order).permit(:payment_method, :select_address, :customer_id, :postal_code, :address, :name, :billing_amount, :postage )  
   end
   
 end
+
+
+
+
+
+
+
+
 
 
 

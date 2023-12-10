@@ -8,7 +8,7 @@
     <div>
       <%= @item_found.name %>
       <%= @item_found.introduction %>
-      ￥<%= @item_found.price %>(税込)
+      ￥<%= @item_found.with_tax_price %>(税込)
       <!--カートに商品追加-->
       <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
         <%= f.hidden_field :item_id, value: @item_found.id %>
@@ -18,6 +18,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 
 
