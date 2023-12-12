@@ -9,7 +9,12 @@ class Order < ApplicationRecord
   # 自身の住所:0, 登録済住所:1, 新規住所:2
   enum select_address: { current_address: 0, registered_address: 1, new_address: 2}
   
+   def total_price
+    order_details.sum { |order_detail| order_detail.subtotal }
+  end
   
 end
+
+
 
 

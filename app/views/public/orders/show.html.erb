@@ -1,0 +1,86 @@
+<div>
+  <h2>注文履歴詳細</h2>
+</div>
+<h4>注文情報</h4>
+<table>
+  <tbody>
+    <tr>
+      <th>注文日</th>
+      <td><%= @order_found.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <td>
+        <!--郵便番号-->
+        <%= @order_found.postal_code %><br>
+        <!--住所-->
+        <%= @order_found.address %><br>
+        <!--名前-->
+        <%= @order_found.name %>
+      </td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td><%= @order_found.payment_method %></td>
+    </tr>
+  </tbody>
+</table>
+<h4>請求情報</h4>
+<table>
+  <tbody>
+    <tr>
+      <th>商品合計</th>
+      <td><%= @order_found.total_price.to_s(:delimited) %>円</td>
+    </tr>
+    <tr>
+      <th>配送料</th>
+      <td><%= @order_found.postage %>円</td>
+    </tr>
+    <tr>
+      <th>ご請求金額</th>
+      
+      <td><%= @order_found.billing_amount = @order_found.postage + @order_found.total_price.to_i %>円</td>
+    </tr>
+  </tbody>
+</table>
+<h4>注文内容</h4>
+<table>
+  <thead>
+    <tr>
+      <th>商品</th>
+      <th>単価(税込)</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_details.each do |order_detail| %>
+     <tr>
+       <!--商品名-->
+       <td><%= order_detail.item.name %></td>
+       <!--単価(税込み)-->
+       <td><%= order_detail.item.with_tax_price %>円</td>
+       <!--個数-->
+       <td><%= order_detail.amount %></td>
+       <!--小計-->
+       <td><%= order_detail.subtotal %>円</td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

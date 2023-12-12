@@ -41,20 +41,20 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    # order_itemを保存
-    # カート内商品を順番に取得
+    # order_detailsを保存
+    # カート内商品の情報を注文履歴に移動
     current_customer.cart_items.each do |cart_item|
       # 初期化
       @order_details = OrderDetail.new
-      # 商品idを注文商品idに代入
+      # 商品idを注文履歴商品idに代入
       @order_details.item_id = cart_item.item_id
-      #商品の個数を注文商品の個数に代入
+      #商品の個数を注文履歴商品の個数に代入
       @order_details.amount = cart_item.amount
       # 税込み価格算出
       @order_details.price = cart_item.item.with_tax_price
-      # 注文商品に注文idを紐付け
+      # 注履歴文商品に注文idを紐付け
       @order_details.order_id = @order.id
-      # 注文商品を保存
+      # 注文履歴商品を保存
       @order_details.save!
     end
     # カートの中身削除
@@ -66,6 +66,16 @@ class Public::OrdersController < ApplicationController
   def complete
   end
   
+  def index
+    @orders = current_customer.orders
+  end
+  
+  def show
+    @order_found = Order.find(params[:id])
+    @order_details = @order_found.order_details.all
+    
+  end
+  
   private
   
   def order_params
@@ -73,6 +83,8 @@ class Public::OrdersController < ApplicationController
   end
   
 end
+
+
 
 
 
