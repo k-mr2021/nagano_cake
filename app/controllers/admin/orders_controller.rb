@@ -1,4 +1,9 @@
 class Admin::OrdersController < ApplicationController
-  before_action :authenticate_adimn!
+  before_action :authenticate_admin!
+  
+  def show
+      
+  end
   
 end
+

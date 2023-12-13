@@ -22,10 +22,11 @@
             <!--会員ID-->
             <td><%= customer.id %></td>
             <!--会員詳細へのリンク-->
-            <td><%= link_to admin_customer_path(customer) do %>
-            <!--会員氏名-->
-              <%= @full_names[index] %>
-            <% end %>
+            <td>
+              <%= link_to admin_customer_path(customer) do %>
+                <!--会員氏名-->
+                <%= @full_names[index] %>
+              <% end %>
             </td>
             <!--会員のメールアドレス-->
             <td><%= customer.email %></td>

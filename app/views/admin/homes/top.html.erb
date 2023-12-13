@@ -1,1 +1,58 @@
-<h1>注文履歴</h1>
+<div>
+  <div>
+    <div>
+      <h2>注文履歴一覧</h2>
+    </div>
+  </div>
+  <div>
+    <div>
+      <table class= "table">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--顧客の一覧表示-->
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+            <!--注文履歴詳細へのリンク-->
+              <%= link_to admin_order_path(order) do %>
+                <!--購入日時-->
+                <%= order.created_at.strftime('%Y/%m/%d') %>
+              <% end %>
+            </td>
+            <!--購入者-->
+              <td><%= order.name %></td>
+            <!--注文個数-->
+            <td><%= order.order_detail_amount %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

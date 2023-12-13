@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   }
   
   namespace :admin do
-    get '/' => 'homes#top', as: :admin_top 
+    get '/admin' => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show]
   end
   
   # 顧客用
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
   end
   
 end
+
 
 
 
