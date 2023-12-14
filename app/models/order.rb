@@ -18,7 +18,12 @@ class Order < ApplicationRecord
     order_details.sum { |order_detail| order_detail.subtotal }
   end
   
+  def full_name
+     ' ' + last_name + ' ' + first_name
+  end
+  
 end
+
 
 
 

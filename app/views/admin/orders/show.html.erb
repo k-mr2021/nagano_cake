@@ -1,1 +1,120 @@
-注文詳細
+<div>
+  <h2>注文履歴詳細</h2>
+  <div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>購入者</th>
+            <td>
+                <%= link_to admin_customer_path(@customer) do %>
+                  <%= @order_found.customer.last_name %>
+                  <%= @order_found.customer.first_name %>
+                <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order_found.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td>
+              〒<%= @order_found.postal_code %>
+              <%= @order_found.address %><br>
+              <%= @order_found.name %>
+            </td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order_found.payment_method_i18n %></td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込み)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_found.order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.with_tax_price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.subtotal %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>商品合計</th>
+        <td><%= @order_found.total_price %></td>
+      </tr>
+      <tr>
+        <th>送料</th>
+        <td><%= @order_found.postage %></td>
+      </tr>
+      <tr>
+        <th>請求金額合計</th>
+        <td><%= @order_found.billing_amount %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

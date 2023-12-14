@@ -26,7 +26,10 @@
               <% end %>
             </td>
             <!--購入者-->
-              <td><%= order.name %></td>
+            <td>
+              <%= order.customer.last_name %>
+              <%= order.customer.first_name %>
+            </td>
             <!--注文個数-->
             <td><%= order.order_detail_amount %></td>
           </tr>
@@ -37,6 +40,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 
 

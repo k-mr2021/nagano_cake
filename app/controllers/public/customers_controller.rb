@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
   
   # 会員の詳細
   def show
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
     # 会員の詳細ページで苗字と名前を連結して表示するために変数を定義
     @full_name = @customer.last_name + @customer.first_name
     @full_name_kana = @customer.last_name_kana + @customer.first_name_kana
@@ -42,6 +42,7 @@ class Public::CustomersController < ApplicationController
   end
   
 end
+
 
 
 

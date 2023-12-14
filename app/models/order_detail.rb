@@ -8,9 +8,13 @@ class OrderDetail < ApplicationRecord
     item.with_tax_price * amount
   end
   
+  def address_display
+    '〒' + postal_code + ' ' + address + ' ' + name
+  end
   
   
 end
+
 
 
 
