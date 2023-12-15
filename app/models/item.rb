@@ -11,6 +11,7 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
   
+  
   # アソシエーション
   belongs_to :genre
   has_many :cart_items, dependent: :destroy

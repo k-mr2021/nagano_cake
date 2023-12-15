@@ -1,6 +1,8 @@
 class Public::ItemsController < ApplicationController
   
   def index
+    # item件数表示するための定義
+    @all_items = Item.all
     @items = Item.page(params[:page])
   end
   

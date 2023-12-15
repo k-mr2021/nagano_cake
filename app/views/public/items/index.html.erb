@@ -1,22 +1,36 @@
 <div>
   <div>
     <div>
-      <h2>商品一覧</h2>
+      <!--.countでitem件数表示-->
+      <h2>商品一覧</h2><p>(全<%= @all_items.count %>件)</p>
     </div>
   </div>
-  <% @items.each do |item| %>
-    <div>
-      <div>
-        <%= link_to item_path(item.id) do %>
-          <!--present?で画像が存在しないときのエラー回避-->
-          <%= image_tag item.image if item.image.present? %>
-        <% end %>
-        <%= item.name %>
-        ￥<%= item.with_tax_price %>
-      </div>
-    </div>
-  <% end %>
+  <div>
+    <table>
+      <% @items.each do |item| %>
+        <tr>
+            <td>
+              <%= link_to item_path(item.id) do %>
+                <!--present?で画像が存在しないときのエラー回避-->
+                <%= image_tag item.image if item.image.present? %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= item.name %></td>
+          </tr>
+          <tr>
+            <td>￥<%= item.with_tax_price %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
+
+
+
+
+
 
 
 

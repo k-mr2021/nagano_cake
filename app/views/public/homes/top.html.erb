@@ -8,8 +8,33 @@
         購入には会員の登録が必要になります。<br>
       </p>
     </div>
-    <div>
-      <h2>新着商品</h2>
-    </div> 
   </div>
+  <h2>新着商品</h2>
+    <div>
+      <table>
+        <% @items.first(4).each do |item| %>
+          <tr>
+            <td>
+              <%= link_to item_path(item.id) do %>
+                <!--present?で画像が存在しないときのエラー回避-->
+                <%= image_tag item.image if item.image.present? %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= item.name %></td>
+          </tr>
+          <tr>
+            <td>￥<%= item.with_tax_price %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div>
+      <%= link_to "すべての商品を見る", items_path %>
+    </div>
 </div>
+
+
+
+
