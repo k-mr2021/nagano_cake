@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root to: 'homes#top'
+    get '/about' => 'homes#about'
     # 退会確認画面
     get '/costomers/check' => 'customers#check', as: 'check'
     # 退会処理(ステータス更新)
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
   end
   
 end
+
+
 
 
 

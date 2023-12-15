@@ -12,19 +12,69 @@
 
   <body>
     <header>
+      <!--顧客のヘッダー-->
       <% if admin_signed_in? %>
+        <li>
+          <%= link_to "商品一覧", admin_items_path %>
+        </li>
+        <li>
+          <%= link_to "会員一覧", admin_customers_path %>
+        </li>
+        <li>
+          <%= link_to "注文履歴一覧", admin_admin_path %>
+        </li>
+        <li>
+          <%= link_to "ジャンル一覧", admin_genres_path %>
+        </li>
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         </li>
-      <% end %>
-      <% if customer_signed_in? %>
+      <!--管理者のヘッダー-->
+      <% elsif customer_signed_in? %>
+        <il>
+          <span>ようこそ,<%= current_customer.last_name %>さん!</span>
+        </il>
+        <li>
+          <%= link_to "マイページ", customer_path(current_customer) %>
+        </li>
+         <li>
+          <%= link_to "商品一覧", items_path(current_customer) %>
+        </li>
+         <li>
+          <%= link_to "カート", cart_items_path(current_customer) %>
+        </li>
         <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>  
+        </li>
+      <!--顧客、管理者共通-->
+      <% else %>
+        <li>
+          <%= link_to "About", about_path %>
+        </li>
+        <li>
+          <%= link_to "商品一覧", items_path %>
+        </li>
+        <li>
+          <%= link_to "新規登録", new_customer_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_customer_session_path %>
         </li>
       <% end %>
     </header>
     <%= yield %>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
