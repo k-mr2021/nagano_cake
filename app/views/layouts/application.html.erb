@@ -12,6 +12,9 @@
 
   <body>
     <header>
+      <nav>
+        <%= link_to "ながのCAKE", root_path %>
+      </nav>
       <!--顧客のヘッダー-->
       <% if admin_signed_in? %>
         <li>
@@ -70,6 +73,8 @@
     <%= yield %>
   </body>
 </html>
+
+
 
 
 
