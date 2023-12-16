@@ -33,8 +33,8 @@ Rails.application.routes.draw do
     post '/orders/confirm' => 'orders#confirm', as: 'confirm'
     get '/orders/complete' => 'orders#complete', as: 'complete'
     # 検索窓
-    post '/search',  to: 'items#search'
-    get  '/search',  to: 'items#search'
+    # post '/search',  to: 'items#search'
+    # get  '/search',  to: 'items#search'
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
     resources :addresses, only: [:new, :index, :edit, :create, :update, :destroy]
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   end
   
 end
+
 
 
 

@@ -1,10 +1,10 @@
-<div>
+<div class= "container">
   <div>
     <div>
-      <h2>注文履歴一覧</h2>
+      <h2 class= "mt-5 mb-3">注文履歴一覧</h2>
     </div>
   </div>
-  <div>
+  <div"row justify-content-center">
     <div>
       <table class= "table">
         <thead>
@@ -31,7 +31,14 @@
               <%= order.customer.first_name %>
             </td>
             <!--注文個数-->
-            <td><%= order.order_detail_amount %></td>
+            <td>
+              <!--0を代入し注文ごとに個数を初期化-->
+              <% @total_amount = 0 %>
+              <% order.order_details.each do |order_detail| %>
+                <% @total_amount += order_detail.amount %>
+              <% end %>
+              <%= @total_amount %>
+            </td>
           </tr>
           <% end %>
         </tbody>
@@ -40,6 +47,18 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
