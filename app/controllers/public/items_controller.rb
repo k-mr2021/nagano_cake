@@ -12,6 +12,15 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
   end
   
+  # 検索窓
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @keyword = params[:item][:search] if params[:item]
+    @all_items = Item.search(@keyword)
+  end
+  
 end
+
+
 
 

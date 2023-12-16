@@ -17,7 +17,8 @@
       <p>ジャンル</p>
       <%= @item_found.genre.name %>
       <p>税込価格(税抜価格)</p>
-      <%= @item_found.price %>
+      <%= @item_found.with_tax_price %>
+      (<%= @item_found.price %>)円
     </div>
     <div>
       <!--編集画面へのリンク-->
@@ -25,6 +26,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 
 
 

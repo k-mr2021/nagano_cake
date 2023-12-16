@@ -11,6 +11,12 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
   
+  # Itemテーブルのcontentカラムを検索する
+  def self.search(search)
+    return Item.all unless search
+    Item.where(['content LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
+  end
+  
   
   # アソシエーション
   belongs_to :genre
