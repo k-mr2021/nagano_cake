@@ -13,13 +13,14 @@ class Public::ItemsController < ApplicationController
   end
   
   # 検索窓
-  def search
+  # def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @keyword = params[:item][:search] if params[:item]
-    @all_items = Item.search(@keyword)
-  end
+    # @keyword = params[:item][:search] if params[:item]
+    # @all_items = Item.search(@keyword)
+  # end
   
 end
+
 
 
 

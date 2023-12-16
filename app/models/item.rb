@@ -12,10 +12,10 @@ class Item < ApplicationRecord
   end
   
   # Itemテーブルのcontentカラムを検索する
-  def self.search(search)
-    return Item.all unless search
-    Item.where(['content LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
-  end
+  # def self.search(search)
+    # return Item.all unless search
+    # Item.where(['content LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
+  # end
   
   
   # アソシエーション
