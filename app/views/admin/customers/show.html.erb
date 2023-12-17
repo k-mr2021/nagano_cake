@@ -1,40 +1,94 @@
-<div>
-  <div>
-    <div>
-      <h2><%= @full_name %>さんの会員詳細</h2>
+<div class= "container">
+  <div class="row">
+    <div class= "col-5 text-center">
+      <h3 class="col-10 mt-4 mb-2 bg-secondary"><%= @full_name %>さんの会員詳細</h3>
     </div>
   </div>
-  <div>
-    <div>
-      <p>会員ID</p>
-      <%= @customer_found.id %>
-      <p>氏名</p>
-      <%= @full_name %>
-      <p>フリガナ</p>
-      <%= @full_name_kana %>
-      <p>郵便番号</p>
-      <%= @customer_found.postal_code %>
-      <p>住所</p>
-      <%= @customer_found.address %>
-      <p>電話番号</p>
-      <%= @customer_found.telephone_number %>
-      <p>メールアドレス</p>
-      <%= @customer_found.email %>
-      <p>会員ステータス</p>
-      <% if @customer_found.is_active == false %>
-        <p>無効</p>
-      <% else %>
-        <p>有効</p>
-      <% end %>
-    </div>
+  <div class= "row">
+    <table class= "table table-borderless">
+      <tr>
+        <th>会員ID</th>
+        <td><%= @customer_found.id %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @full_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>>
+        <td><%= @full_name_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @customer_found.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @customer_found.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @customer_found.telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customer_found.email %></td>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <td>
+          <% if @customer_found.is_active == false %>
+            <p class="text-success font-weight-bold">無効</p>
+          <% else %>
+            <p class="text-success font-weight-bold">有効</p>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class ="row justify-content-center">
     <div>
       <!--顧客編集画面へのリンク-->
-      <p><%= link_to "編集する", edit_admin_customer_path(@customer_found) %></p>
+      <%= link_to "編集する", edit_admin_customer_path(@customer_found), class:"btn btn-success my-1 mx-4 px-4" %>
       <!--顧客一覧へ戻る-->
-      <p>注文履歴一覧を見る</p>
+      <%= link_to "注文履歴一覧を見る", admin_admin_path, class:"btn btn-primary mx-4 px-4" %>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

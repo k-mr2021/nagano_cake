@@ -1,31 +1,65 @@
-<div>
-  <div>
-    <div>
-      <h2>商品詳細</h2>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-4 text-center">
+      <h3 class= "col-10 mt-4 mb-2 bg-secondary">商品詳細</h3>
     </div>
   </div>
-  <div>
-    <div>
+  <div class="row align-items-center mt-5">
+    <div class="col-lg text-left mb-5">
       <!--prsent?は画像が存在するときだけimage_tagに@item_foundを渡す。つまり画像が存在しないと表示させずエラーを回避する-->
-      <%= image_tag @item_found.image if @item_found.image.present? %>
+      <%= image_tag @item_found.image, :size => '300x250' if @item_found.image.present? %>
     </div>
-    <div>
-      <p>商品名</p>
-      <%= @item_found.name %>
-      <p>商品説明</p>
-      <%= @item_found.introduction %>
-      <p>ジャンル</p>
-      <%= @item_found.genre.name %>
-      <p>税込価格(税抜価格)</p>
-      <%= @item_found.with_tax_price %>
-      (<%= @item_found.price %>)円
-    </div>
-    <div>
-      <!--編集画面へのリンク-->
-      <p><%= link_to "編集する", edit_admin_item_path(@item_found) %></p>
+    <div class="col-lg">
+      <table class= "table table-borderless">
+        <tr>
+          <th>商品名</th>
+          <td><%= @item_found.name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @item_found.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @item_found.genre.name %></td>
+        </tr>
+        <tr>
+          <th>税込価格(税抜価格)</th>
+          <td>
+            <%= @item_found.with_tax_price.to_s(:delimited) %>
+            (<%= @item_found.price.to_s(:delimited) %>)円
+          </td>
+        </tr>
+        <tr>
+          <div class= "form-action">
+            <!--編集画面へのリンク-->
+            <td><%= link_to "編集する", edit_admin_item_path(@item_found), class: "btn btn-success mt-4 ml-5" %></td>
+          </div>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,16 +1,20 @@
 <div class= "container">
-  <h2>注文履歴詳細</h2>
-  <div class="row justify-content-left">
+  <div class="row">
+    <div class= "col-5 text-center">
+      <h3 class="col-10 mt-4 mb-2 bg-secondary">注文履歴詳細</h3>
+    </div>
+  </div>
+  <div class="row">
     <div>
-      <table>
-        <thead class="table table-borderless">
+      <table class="table table-borderless">
+        <thead>
           <tr>
             <th>購入者</th>
             <td>
-                <%= link_to admin_customer_path(@customer) do %>
-                  <%= @order_found.customer.last_name %>
-                  <%= @order_found.customer.first_name %>
-                <% end %>
+              <%= link_to admin_customer_path(@customer) do %>
+                <%= @order_found.customer.last_name %>
+                <%= @order_found.customer.first_name %>
+              <% end %>
             </td>
           </tr>
           <tr>
@@ -33,13 +37,13 @@
       </table>
     </div>
   </div>
-  <div>
+  <div class= "row">
     <div>
-      <table>
+      <table class= "table">
         <thead>
           <tr>
             <th>商品名</th>
-            <th>単価(税込み)</th>
+            <th>単価(税込)</th>
             <th>数量</th>
             <th>小計</th>
           </tr>
@@ -48,32 +52,68 @@
           <% @order_found.order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.item.with_tax_price %></td>
+              <td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
               <td><%= order_detail.amount %></td>
-              <td><%= order_detail.subtotal %></td>
+              <td><%= order_detail.subtotal.to_s(:delimited) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-  </div>
-  <div>
-    <table>
-      <tr>
-        <th>商品合計</th>
-        <td><%= @order_found.total_price %></td>
-      </tr>
-      <tr>
-        <th>送料</th>
-        <td><%= @order_found.postage %></td>
-      </tr>
-      <tr>
-        <th>請求金額合計</th>
-        <td><%= @order_found.billing_amount %></td>
-      </tr>
-    </table>
+    <div class= "offset-2"></div>
+    <div class= "col-sm-4 py-2">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th>
+          <td><%= @order_found.total_price.to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= @order_found.postage.to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td><strong><%= @order_found.billing_amount.to_s(:delimited) %>円</strong></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

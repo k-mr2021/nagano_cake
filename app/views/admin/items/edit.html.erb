@@ -1,47 +1,48 @@
-<div>
-  <div>
-    <div>
-      <h2>商品編集</h2>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-4 text-center">
+      <h3 class= "col-10 mt-4 mb-2 bg-secondary">商品編集</h3>
     </div>
   </div>
-  <div>
-    <div>
+  <div class= "row">
+    <div class= "col-sm-10 px-sm-0 mx-auto mb-5">
       <!--アイテムの更新パス-->
       <%= form_with model: @item_found, url: admin_item_path(@item_found.id), method: :patch do |f| %>
-      <table>
+      <table class= "table table-borderless">
         <tr>
-          <div class="form_group">
+          <div class="form-group">
             <th><%= f.label :商品画像 %></th>
             <td><%= f.file_field :image, accept: "image/*" %></td>
           </div>
         </tr>
         <tr>
-          <div class="form_group">
+          <div class="form-group">
             <th><%= f.label :商品名 %></th>
-            <td><%= f.text_field :name %></td>
+            <td><%= f.text_field :name, size: "37x5" %></td>
           </div>
         </tr>
         <tr>
-          <div class="form_group">
+          <div class="form-group">
             <th><%= f.label :商品説明 %></th>
-            <td><%= f.text_area :introduction %></td>
+            <td><%= f.text_area :introduction, size: "37x5" %></td>
           </div>
         </tr>
         <tr>
-          <div class="form_group">
+          <div class="form-group">
             <th><%= f.label :ジャンル %></th>
             <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
           </div>
         </tr>
         <tr>
-          <div class="form_group">
+          <div class="form-group">
             <th><%= f.label :税抜き価格 %></th>
-            <td><%= f.text_field :price %>円</td>
+            <td><%= f.text_field :price, size: "37x5" %>円</td>
           </div>
         </tr>
         <tr>
-          <div>
-            <th><%= f.submit "変更を保存" %></th>
+          <div class= "form-action">
+            <th></th>
+            <td><%= f.submit "変更を保存", class: "btn btn-success mt-4 px-3 ml-5" %></td>
           </div>
         </tr>
       </table>
@@ -49,6 +50,11 @@
     </div>
   </div>
 </div>
+
+
+
+
+
 
 
 
