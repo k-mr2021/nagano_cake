@@ -1,31 +1,30 @@
-<div>
-  <div>
-    <div>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-3">
       <!--.countでitem件数表示-->
-      <h2>商品一覧</h2><p>(全<%= @all_items.count %>件)</p>
+      <h3 class="mt-5">商品一覧</h3>
+      <p class= >(全<%= @all_items.count %>件)</p>
     </div>
   </div>
-  <div>
-    <table>
-      <% @items.each do |item| %>
-        <tr>
-            <td>
-              <%= link_to item_path(item.id) do %>
-                <!--present?で画像が存在しないときのエラー回避-->
-                <%= image_tag item.image if item.image.present? %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td><%= item.name %></td>
-          </tr>
-          <tr>
-            <td>￥<%= item.with_tax_price %></td>
-          </tr>
-      <% end %>
-    </table>
+  <div class="row mt-3 mb-3 text-center text-md-left">
+    <% @items.each do |item| %>
+      <div class="col-md-3">
+        <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+          <%= link_to item_path(item.id) do %>
+            <!--present?で画像が存在しないときのエラー回避-->
+            <p class="img-wrap"><%= image_tag item.image if item.image.present? %>
+          <% end %>
+          <div class="card-body">
+            <p class="item-details item-name card-text"><%= item.name %></p>
+            <p class="item-details card-text">￥<%= item.with_tax_price.to_s(:delimited) %></p>
+          </div>
+       </div>
+     </div>
+   <% end %>
   </div>
 </div>
+
+
 
 
 

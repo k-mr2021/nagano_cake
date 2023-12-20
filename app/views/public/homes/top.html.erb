@@ -1,7 +1,8 @@
-<div>
-  <div>
-    <div>
-      <p>
+<div class= " card home-box mx-auto my-3" style="width: 400px; height: auto;">
+  <img class="slide-img" src="assets/no_image.jpg">
+  <div class="card-img-overlay d-flex">
+    <div class="m-auto">
+      <p class="card-title">
         ようこそ、ながのCAKEへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
@@ -9,31 +10,40 @@
       </p>
     </div>
   </div>
-  <h2>新着商品</h2>
-    <div>
-      <table>
-        <% @items.first(4).each do |item| %>
-          <tr>
-            <td>
-              <%= link_to item_path(item.id) do %>
-                <!--present?で画像が存在しないときのエラー回避-->
-                <%= image_tag item.image if item.image.present? %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td><%= item.name %></td>
-          </tr>
-          <tr>
-            <td>￥<%= item.with_tax_price %></td>
-          </tr>
+</div>
+<div class= "container">
+  <div class= "row">
+    <h3 class="mt-5">新着商品</h3>
+  </div>
+  <!--.rowをeachの外で記述することによりグリッドシステムがうまく機能する。-->
+  <div class="row mt-3 mb-3 text-center text-md-left">
+  <% @items.first(4).each do |item| %>
+    <div class="col">
+      <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+        <%= link_to item_path(item.id) do %>
+          <!--present?で画像が存在しないときのエラー回避-->
+          <p class="img-wrap"><%= image_tag item.image if item.image.present? %></p>
         <% end %>
-      </table>
+        <div class="card-body">
+          <p class="item-details item-name card-text"><%= item.name %></p>
+          <p class="item-details card-text">￥<%= item.with_tax_price.to_s(:delimited) %></p>
+        </div>
+      </div>
     </div>
-    <div>
-      <%= link_to "すべての商品を見る", items_path %>
+  <% end %>
+  </div>
+    <div class="all-items-show-button">
+      <p class="text-right"><%= link_to "全ての商品を見る", items_path %></p>
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 
 
