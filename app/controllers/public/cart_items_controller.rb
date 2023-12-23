@@ -36,7 +36,6 @@ class Public::CartItemsController < ApplicationController
       cart_item.update(amount: cart_item.amount)
       redirect_to cart_items_path
     else
-    # byebug
       cart_item.save
       redirect_to cart_items_path
     end
@@ -49,6 +48,7 @@ class Public::CartItemsController < ApplicationController
   end
   
 end
+
 
 
 

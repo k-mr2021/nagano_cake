@@ -31,8 +31,10 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     # is_activeカラムをfalseに変更し退会できるようにする
     @customer.update(is_active: false)
+    # ログアウトさせる
     reset_session
-    redirect_to new_customer_registration_path
+    flash[:notice] = "退会が完了しました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
   
   private
@@ -42,6 +44,9 @@ class Public::CustomersController < ApplicationController
   end
   
 end
+
+
+
 
 
 
