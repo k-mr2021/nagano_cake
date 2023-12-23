@@ -3,7 +3,8 @@ class Public::ItemsController < ApplicationController
   def index
     # item件数表示するための定義
     @all_items = Item.all
-    @items = Item.page(params[:page]).per(8)
+    @items = Item.all.page(params[:page]).per(8)
+
   end
   
   def show
@@ -20,6 +21,12 @@ class Public::ItemsController < ApplicationController
   # end
   
 end
+
+
+
+
+
+
 
 
 

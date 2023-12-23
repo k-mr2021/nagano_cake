@@ -1,42 +1,55 @@
-<div>
-  <h2>会員情報編集</h2>
-  <div>
-    <!--更新メソッド-->
-    <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
-    <div>
-      <div>
-        <%= f.label :"氏名" %>
-        <%= f.text_field :last_name %>
-        <%= f.text_field :first_name %>
-      </div>
-      <div>
-        <%= f.label :"フリガナ" %>
-        <%= f.text_field :last_name_kana %>
-        <%= f.text_field :first_name_kana %>
-      </div>
-      <div>
-        <%= f.label :"郵便番号" %>
-        <%= f.text_field :postal_code %>
-      </div>
-      <div>
-        <%= f.label :"住所" %>
-        <%= f.text_field :address%> 
-      </div>
-      <div>
-        <%= f.label :"電話番号" %>
-        <%= f.text_field :telephone_number %>
-      </div>
-      <div>
-        <%= f.label :"メールアドレス" %>
-        <%= f.text_field :email %>
-      </div>
-      <div>
-        <%= f.submit "編集内容を保存" %>
-        <%= link_to "退会する", check_path %>
+<div class= "container">
+  <div class="row">
+    <div class= "col-3 text-center">
+      <h3 class="mt-4 mb-2 bg-secondary">会員情報編集</h3>
+    </div>
+  </div>
+  <!--更新メソッド-->
+  <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
+    <div class= "row">
+      <div class= "col">
+        <table class= "table table-borderless">
+          <tr>
+            <th><%= f.label :"氏名" %></th>
+            <td>
+              <%= f.text_field :last_name, class: "form-field mr-5" %>
+              <%= f.text_field :first_name %>
+            </td>
+          </tr>
+          <tr>
+            <th><%= f.label :"フリガナ" %></th>
+            <td>
+              <%= f.text_field :last_name_kana, class: "form-field mr-5" %>
+              <%= f.text_field :first_name_kana %>
+            </td>
+          </tr>
+          <tr>
+            <th><%= f.label :"郵便番号" %></th>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :"住所" %></th>
+            <td><%= f.text_field :address , size: "53x5" %></td> 
+          </tr>
+          <tr>
+            <th><%= f.label :"電話番号" %></th>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :"メールアドレス" %></th>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <%= f.submit "編集内容を保存", class: "btn btn-success mr-5" %>
+              <%= link_to "退会する", check_path, class: "btn btn-danger ml-5" %>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   <% end %>
-  </div>
 </div>
 
 

@@ -36,6 +36,7 @@ class Public::CartItemsController < ApplicationController
       cart_item.update(amount: cart_item.amount)
       redirect_to cart_items_path
     else
+    # byebug
       cart_item.save
       redirect_to cart_items_path
     end
@@ -44,10 +45,16 @@ class Public::CartItemsController < ApplicationController
   private
   
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:customer_id, :item_id, :amount)
   end
   
 end
+
+
+
+
+
+
 
 
 

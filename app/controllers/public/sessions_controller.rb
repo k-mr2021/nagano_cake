@@ -49,12 +49,14 @@ class Public::SessionsController < Devise::SessionsController
       if customer.valid_password?(params[:customer][:password]) && (customer.is_active == true)
         redirect_to customer_path(current_customer)
       else
-        redirect_to new_customer_registration
+        flash[:alert] = "このアカウントは退会済みです。"
+        redirect_to new_customer_registration_path
       end
     end
   end
   
 end
+
 
 
 

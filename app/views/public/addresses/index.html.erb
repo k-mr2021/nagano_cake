@@ -8,39 +8,44 @@
     </ul>
   </div>
 <% end %>
-<div>
-  <div>
-    <div>
-      <h2>配送先登録/一覧</h2>
+<div class= "container-fluid">
+  <div class= "row justify-content-start">
+    <div class= "offset-1"></div>
+    <div class= "col-2 ml-5 mb-3">
+      <h3 class= "text-center mt-4 mb-2 bg-secondary">配送先登録/一覧</h3>
     </div>
   </div>
   <!--配送先登録-->
   <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
-    <div>
-      <div class="form-group">
-        <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-        <%= f.text_field :postal_code, placeholder: "0000000" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :address, "住所" %>
-        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :name, "宛名" %>
-        <%= f.text_field :name, placeholder: "令和道子" %>
-        <%= f.submit "新規登録" %>
+    <div class= "row">
+      <div class="col-8 ml-5">
+        <table class= "table table-borderless">
+          <tr>
+            <th><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th>
+            <td><%= f.text_field :postal_code, placeholder: "0000000" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :address, "住所" %></th>
+            <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" , size: "60x5" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name, "宛名" %></th>
+            <td><%= f.text_field :name, placeholder: "令和道子" %></td>
+            <td><%= f.submit "新規登録", class: "btn btn-success px-4" %></td>
+          </tr>
+        </table>
       </div>
     </div>
   <% end %>
-  <div>
-    <div>
-      <table class="table">
-        <thead>
+  <div class= "row">
+    <div class= "col-8 ml-5 mt-5">
+      <table class="table table-hover table-bordered">
+        <thead class= "thead-light">
           <tr>
-            <th>郵便番号</th>
-            <th>住所</th>
-            <th>宛名</th>
-            <th></th>
+            <th style="width: 100px">郵便番号</th>
+            <th style="width: 250px">住所</th>
+            <th style="width: 100px">宛名</th>
+            <th style="width: 150px"></th>
           </tr>
         </thead>
         <tbody>
@@ -50,10 +55,12 @@
               <td><%= address.postal_code %></td>
               <td><%= address.address %></td>
               <td><%= address.name %></td>
-              <td><%= link_to "編集する", edit_address_path(address.id) %></td>
-              <td><%= link_to "削除する", address_path(address), method: :delete %></td>
+              <td>
+                <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
+                <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger" %>
+              </td>
             </tr>
-          <% end %>  
+          <% end %>
         </tbody>
       </table>
     </div>

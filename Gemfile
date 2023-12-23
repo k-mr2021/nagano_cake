@@ -63,3 +63,6 @@ gem "enum_help"
 
 gem 'pry-rails'
 
+# gem 'will_paginate', '~> 3.3.0'
+
+
