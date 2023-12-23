@@ -31,7 +31,7 @@ class Public::SessionsController < Devise::SessionsController
   end
   
   def after_sign_out_path_for(resource)
-    customer_session_path
+    root_path
   end
   
   # 退会機能
@@ -56,6 +56,7 @@ class Public::SessionsController < Devise::SessionsController
   end
   
 end
+
 
 
 
