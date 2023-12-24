@@ -47,15 +47,23 @@ class Public::SessionsController < Devise::SessionsController
     # 【処理4】 アクティブでない会員に対する処理
     if customer
       if customer.valid_password?(params[:customer][:password]) && (customer.is_active == true)
-        redirect_to customer_path(current_customer)
-      else
-        flash[:alert] = "このアカウントは退会済みです。"
-        redirect_to new_customer_registration_path
+        flash[:error] = "必須項目を入力してください。"
+        # redirect_to root_path
       end
+    else
+      flash[:alert] = "このアカウントは退会済みです。"
+      redirect_to new_customer_registration_path
     end
+    
   end
   
 end
+
+
+
+
+
+
 
 
 
